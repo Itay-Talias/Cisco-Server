@@ -76,7 +76,7 @@ app.post("/get", async (req: Request, res: Response) => {
   }
   catch (err:any)
   {
-    res.send(err.message);
+    res.send(process.env.AWS_ACCESS_KEY_ID);
   }
 })
 
