@@ -65,6 +65,7 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.post("/get", async (req: Request, res: Response) => {
+  try{
     const { sort, page, region, running }: {sort: string | undefined, page: number | undefined,region: string | undefined, running: Boolean | undefined } = req.body;
     const instances = await getInstances();
     const sortedInstances = sort ? instances.sort((a: EC2Instance, b: EC2Instance) => a[sort] > b[sort] ? 1 : -1) : instances;
@@ -72,6 +73,11 @@ app.post("/get", async (req: Request, res: Response) => {
     const regionInstance = region ? paginatedInstances.filter((a : EC2Instance) => a.region.includes(region)) : paginatedInstances;
     const runningInstance = running ? paginatedInstances.filter((a : EC2Instance) => a.state=="running") : regionInstance;
     res.send(runningInstance);
+  }
+  catch (err:any)
+  {
+    res.send(err.message);
+  }
 })
 
 app.listen(port, () => {
