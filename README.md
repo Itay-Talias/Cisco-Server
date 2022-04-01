@@ -6,12 +6,12 @@ $ npm i
 $ npx ts-node src/app.ts
 ```
 # Deployed app
-The URL for the deployed application is `3.92.197.220`
+The URL for the deployed application is `pwr3mq2ptw.us-east-1.awsapprunner.com`
 
 Port: `8080`
  
 ## The application supports posts requests
-To testing the application you need to send a post request to 3.92.197.220:8080/get with JSON that include:
+To testing the application you need to send a post request to pwr3mq2ptw.us-east-1.awsapprunner.com/get with JSON that include:
 1.	“region” : “your region” (string) – to get a list of EC2 instances in a specified region.
 2.	“sort” : “attributes” (string) – to get a sorted list of  EC2 instances by attributes.
 3.	“page” : page number (number) – to get a page number of  EC2 instances that you chose.
