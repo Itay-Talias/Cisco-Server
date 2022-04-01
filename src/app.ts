@@ -36,9 +36,9 @@ const getInstances = async (): Promise<EC2Instance[]> => {
     const data = await client.send(command)
     return parseInstances(data);
 
-  } catch (e: any) {
-    console.log(e);
-    throw new Error(e.message);
+  } catch (err: any) {
+    console.log(err);
+    throw new Error(err.message);
   }
 };
 
@@ -76,7 +76,7 @@ app.post("/get", async (req: Request, res: Response) => {
   }
   catch (err:any)
   {
-    res.send(process.env.AWS_ACCESS_KEY_ID);
+    res.send(err.message);
   }
 })
 
